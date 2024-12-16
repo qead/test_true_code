@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "8c186259-82b0-449a-8162-a898a9c2b3b0",
+		"name": "Product True_code",
+		"description": "Test API for managing products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32907541"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Test Product",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "This is a test product.",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "100.50",
+							"type": "text"
+						},
+						{
+							"key": "discountedPrice",
+							"value": "90.00",
+							"type": "text"
+						},
+						{
+							"key": "sku",
+							"value": "TEST12345",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "path/to/your/file.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products?page=1&limit=5&sort=price&order=ASC&name=Test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "sort",
+							"value": "price"
+						},
+						{
+							"key": "order",
+							"value": "ASC"
+						},
+						{
+							"key": "name",
+							"value": "Test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Updated Product",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Updated description.",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "150.00",
+							"type": "text"
+						},
+						{
+							"key": "discountedPrice",
+							"value": "120.00",
+							"type": "text"
+						},
+						{
+							"key": "sku",
+							"value": "UPDATED12345",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "path/to/your/updated-file.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/products/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"products",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

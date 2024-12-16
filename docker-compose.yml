@@ -1,0 +1,55 @@
+version: '3.1'
+
+services:
+  # Сервис для PostgreSQL
+  database:
+    image: postgres:latest
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: product_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - dev
+  # Сервис для Node.js (backend)
+  backend:
+    build: ./back
+    container_name: node_backend
+    restart: always
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://user:password@database:5432/product_db
+    ports:
+      - "3000:3000"  
+    depends_on:
+      - database 
+    networks:
+      - dev
+
+  # Сервис для Next.js (frontend)
+  frontend:
+    build: ./front
+    container_name: next_frontend
+    restart: always
+    environment:
+      NODE_ENV: production
+      BACK_URL: http://backend:3000/
+    ports:
+      - "3001:3001" 
+    depends_on:
+      - backend 
+    networks:
+      - dev
+
+networks:
+  dev:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

@@ -1,0 +1,4 @@
+back/node_modules
+back/uploads/
+postgres_data/
+client/node_modules
